@@ -27,7 +27,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and export to Docker
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           load: true
@@ -36,7 +36,7 @@ jobs:
         run: |
           docker run --rm ${{ env.TEST_TAG }}
       - name: Build and push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         if: ${{ ! startsWith(github.ref, 'refs/heads/master') }}
         with:
           context: .
